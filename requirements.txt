@@ -1,0 +1,7 @@
+langchain
+langchain-community
+langchain-mistralai
+chromadb
+gradio
+pypdf
+huggingface-hub
