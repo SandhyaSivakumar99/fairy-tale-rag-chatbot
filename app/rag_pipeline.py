@@ -22,9 +22,8 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 docs = splitter.split_documents(documents)
 
 # 🔎 Create Embeddings and Vector DB
-embedding = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-vectordb = Chroma.from_documents(docs, embedding=embedding)
-retriever = vectordb.as_retriever(search_kwargs={"k": 5})
+from app.embeddings_config import create_embedding_store
+retriever = create_embedding_store(docs)
 
 # 🧵 Enable Memory
 memory = ConversationBufferMemory(
